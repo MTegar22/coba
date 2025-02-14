@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine For Karin</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            background-image: url('Honeymoon - Pixel Jeff.gif');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .container, .menu, .content {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .menu, .content {
+            display: none;
+        }
+        h1 {
+            font-size: 24px;
+            text-shadow: 2px 2px 4px black;
+        }
+        .menu {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .menu img {
+            width: 120px;
+            height: auto;
+            cursor: pointer;
+            margin: 15px 0;
+            transition: transform 0.3s;
+        }
+        .menu img:hover {
+            transform: scale(1.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .cat {
+            position: absolute;
+            width: 100px;
+            bottom: 0;
+            animation: moveCat 10s linear infinite;
+        }
+        @keyframes moveCat {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background-color: #ff1493;
+            transform: scale(1.1);
+        }
+
+      
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+        .gallery-grid img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <img src="kucing.gif" class="cat" alt="Pixel Cat">
+    <div class="container" id="valentineContainer">
+        <h1>Will you be my Valentine? ❤️</h1>
+        <button id="yesBtn">YESS</button>
+        <button id="noBtn">NO</button>
+        <audio id="loveSong" src="H.E.R._-_Best_Part_Lyrics_Ft._Daniel_Caesar.mp3"></audio>
+    </div>
+    
+    <div class="menu" id="menuContainer">
+        <h1>Yay! Aku sayang kamu! 💖</h1>
+        <img src="love.png" alt="Love" id="loveBtn">
+        <img src="kamera.png" alt="Gallery" id="galleryBtn">
+        <img src="surat.png" alt="Remember" id="letterBtn">
+    </div>
+    
+    <div class="content" id="loveContent">
+        <h1>Happy Valentine! 💕</h1>
+        <p>Happy Valentine’s Day, sayang! 💕 Terima kasih sudah menjadi bagian terindah dalam hidupku. Setiap hari bersamamu selalu penuh dengan kebahagiaan dan makna. Kamu adalah alasan di balik senyumku, dan aku bersyukur bisa mencintai serta dicintai olehmu. Semoga hari ini membawa lebih banyak kebahagiaan untuk kita, dan semoga cinta kita terus tumbuh semakin kuat setiap harinya.</p>
+        <p>Aku ingin kita selalu saling mendukung, berbagi tawa, dan melewati setiap tantangan bersama. Tak peduli seberapa sulit perjalanan ini, aku yakin selama kita tetap menggenggam tangan satu sama lain, kita bisa melalui semuanya. Aku mencintaimu, hari ini, esok, dan selamanya. Selamat Hari Valentine, cintaku! ❤️✨</p>
+        <button id="backToMenu1">Back</button>
+        <button id="nextToGallery">Next</button>
+    </div>
+    
+    <div class="content" id="galleryContent">
+        <h1>Gallery 📸</h1>
+        <div class="gallery-grid">
+            <img src="foto1.jpg" alt="Foto 1">
+            <img src="foto2.jpg" alt="Foto 2">
+            <img src="foto3.jpg" alt="Foto 3">
+            <img src="foto4.jpg" alt="Foto 4">
+            <img src="foto5.jpg" alt="Foto 5">
+            <img src="foto6.jpg" alt="Foto 6">
+        </div>
+        <button id="backToMenu2">Back</button>
+        <button id="nextToRemember">Next</button>
+    </div>
+    
+    <div class="content" id="rememberContent">
+        <h1>Remember 📝</h1>
+        <p>Sayang, apa pun yang terjadi nanti, jangan lupa aku ya! 🥹 Aku selalu dukung kamu, jadi tetap semangat kejar impianmu. Kamu kuat, kamu hebat, dan aku bangga sama kamu! 💕</p>
+        <p>Tapi janji, jangan sampai waktu atau jarak bikin kita jauh. Ingat semua momen kita, karena aku nggak akan lupa kamu. Love you selalu! ❤️✨</p>
+        <button id="backToMenu3">Back</button>
+    </div>
+    
+    <script>
+        document.getElementById('yesBtn').addEventListener('click', function() {
+            document.getElementById('loveSong').play();
+            document.getElementById('valentineContainer').classList.add('hidden');
+            document.getElementById('menuContainer').style.display = 'flex';
+        });
+        
+        document.getElementById('noBtn').addEventListener('click', function() {
+            this.style.display = 'none';
+        });
+        
+        function showContent(contentId) {
+            document.getElementById('menuContainer').style.display = 'none';
+            document.querySelectorAll('.content').forEach(el => el.style.display = 'none');
+            document.getElementById(contentId).style.display = 'block';
+        }
+        
+        document.getElementById('loveBtn').addEventListener('click', function() { showContent('loveContent'); });
+        document.getElementById('galleryBtn').addEventListener('click', function() { showContent('galleryContent'); });
+        document.getElementById('letterBtn').addEventListener('click', function() { showContent('rememberContent'); });
+        document.getElementById('backToMenu1').addEventListener('click', function() { showContent('menuContainer'); });
+        document.getElementById('backToMenu2').addEventListener('click', function() { showContent('menuContainer'); });
+        document.getElementById('backToMenu3').addEventListener('click', function() { showContent('menuContainer'); });
+        document.getElementById('nextToGallery').addEventListener('click', function() { showContent('galleryContent'); });
+        document.getElementById('nextToRemember').addEventListener('click', function() { showContent('rememberContent'); });
+    </script>
+</body>
+</html>
